@@ -2,12 +2,16 @@ import React, { useRef } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import DisplayHome from './DisplayHome'
 import DisplayAlbum from './DisplayAlbum'
+import { albumsData } from '../assets/assets'
 
 const Display = () => {
 
   const displayRef = useRef();
   const location = useLocation();
   const isAlbum = location.pathname.includes("album");
+  const albumId = isAlbum ? location.pathname.slice(-1) : "";
+  const bgColor = albumsData[Number(albumId)].bgColor;
+   console.log(bgColor);
   
  
 
@@ -16,7 +20,7 @@ const Display = () => {
       <Routes>
         <Route path='/' element={<DisplayHome/>} />
         <Route path='/album/:id' element={<DisplayAlbum/>} />
-
+  
       </Routes>
     </div>
   )
