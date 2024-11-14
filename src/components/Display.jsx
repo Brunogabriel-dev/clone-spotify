@@ -11,7 +11,6 @@ const Display = () => {
   const isAlbum = location.pathname.includes("album");
   const albumId = isAlbum ? location.pathname.slice(-1) : "";
   const bgColor = albumsData[Number(albumId)].bgColor;
-   console.log(bgColor);
   
  
 
