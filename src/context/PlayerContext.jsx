@@ -1,12 +1,21 @@
-import { createContext } from "react";
+import { createContext, useRef, useState } from "react";
+import { songsData } from "../assets/assets";
 
-const PlayerContext = createContext();
+export const PlayerContext = createContext();
 
 const PlayerContextProvider = (props) => {
 
+  const audioRef = useRef();
+  const seekBg = useRef();
+  const seekBar = useRef();
+
+  const [track,setTrack] = useState(songsData[0]);
+  const [playStatus,setPlayStatus] = useState(false);
 
   const contextValue = {
-
+    audioRef,
+    seekBar,
+    seekBg
   }
 
   return (
@@ -14,4 +23,7 @@ const PlayerContextProvider = (props) => {
       {props.children}
     </PlayerContext.Provider>
   )
+
 }
+
+export default PlayerContextProvider;
