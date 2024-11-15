@@ -9,9 +9,9 @@ const PlayerContextProvider = (props) => {
   const seekBg = useRef();
   const seekBar = useRef();
 
-  const [track,setTrack] = useState(songsData[0]);
-  const [playStatus,setPlayStatus] = useState(false);
-  const [time,setTime] = useState({
+  const [track, setTrack] = useState(songsData[0]);
+  const [playStatus, setPlayStatus] = useState(false);
+  const [time, setTime] = useState({
     currentTime:{
       second: 0,
       minute: 0
@@ -22,10 +22,25 @@ const PlayerContextProvider = (props) => {
     }
   })
 
+  const play = () => {
+    audioRef.current.play();
+    setPlayStatus(true)
+  }
+
+  const pause = () => {
+    audioRef.current.pause();
+    setPlayStatus(false);
+  }
+
+
   const contextValue = {
     audioRef,
     seekBar,
-    seekBg
+    seekBg,
+    track,setTrack,
+    playStatus,setPlayStatus,
+    time,setTime,
+    play,pause
   }
 
   return (
